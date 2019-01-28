@@ -172,7 +172,7 @@ class TheBridge(Scene):
             print(dedent("""
                 You point your blaster at the bom under your arm and
                 the Gothons put their hands up and start to sweat.
-                YOu inch backward to the door, open it, and then
+                You inch backward to the door, open it, and then
                 carefully place the bomb on the floor, pointing your
                 blaster at it. You hump back through the door,
                 punch the close button and blast the lock so the
