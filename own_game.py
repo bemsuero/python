@@ -46,7 +46,7 @@ def main():
             "You died.",
             "You didn't live.",
             "Dead for the first time, again.",
-            "Red Dead Redemption.",
+            "You take the big sleep.",
             "You fell through life into death."
 
 
@@ -90,7 +90,7 @@ def main():
 
                 if action == "enter":
                     print(dedent("""
-                        You keep your sword ready at your side as you start walking toward
+                        You keep your short sword ready at your side as you start walking toward
                         the entrance. You are wary of the monsters and ghouls who are said
                         to live in these walls. You are brave above all.
                         """))
@@ -143,7 +143,7 @@ def main():
                 print(dedent("""
                     You shudder in fear. The school prepared you for this, but you have never seen
                     a zombie up close. You consider what you can do. Should you 'yell' for it to stop?
-                    Should you cast 'magic missle'? Should you 'run' away?
+                    Should you cast 'magic missile'? Should you 'run' away?
                     """))
                 action = input("> ").lower()
 
@@ -155,11 +155,104 @@ def main():
                         """))
                     return "death"
 
+                elif action == "magic missile":
+                    print(dedent("""
+                        Your 3 missiles all hit the creature. The first stuns him, the second stops
+                        him completely, and the last cracks the creatures skull open. The body falls
+                        limp and it seems to have died for the final time. You breathe a sigh of relief.
+                        """))
+                    return 'mimic_room'
 
-            # elif character == "figher":
+                elif action == "run":
+                    print(dedent("""
+                        'No treasure is worth my life', you think. You turn around to high-tail it
+                        out of the dungeon. You take the first left, then another left. You feel
+                        like you may have went the wrong way. As you stand contemplating why you
+                        didn't draw a map, you feel a cold hand on your shoulder.
+                        """))
+                    return "death"
 
-            # elif character == "rogue":
+                else:
+                    print("Your indecision has cost you your life.")
+                    return "death"
 
+            elif character == "fighter":
+                print(dedent("""
+                    You expected horrors so you are not surprised. Your warrior spirit urges you
+                    forward. The only option is attack. You bring the short sword up to take down
+                    the abomination. Should you cut off it's 'arms' to stop it's attack? Go for the
+                    'legs' and hinder it's mobility? Or should you go straight for the 'head', and
+                    end it's misery?
+                    """))
+                action = input("> ").lower()
+
+                if action == "arms":
+                    print(dedent("""
+                        You swing wildly at the creature's arm. It comes clean off. As you swing
+                        down onto the other arm you lose momentum. The blade gets caught halfway
+                        through the shoulder. As you struggle to get it off the zombie rears forward
+                        and sinks his teeth into your neck.
+                        """))
+                    return "death"
+
+                elif action == "legs":
+                    print(dedent("""
+                        'It can not eat me if it can not catch me', you chuckle to yourself.
+                        You lunge forward, and do a horizontal attack towards the creature's
+                        left leg. The blade sinks into it's hip and gets stuck. As you try to yank
+                        it out, the creature grabs a hold of you. The last thing you see is a dirty
+                        grin.
+                        """))
+                    return "death"
+
+                elif action == "head":
+                    print(dedent("""
+                        A classic villain deserves a classic approach. You run forward and leap
+                        into the air. Screaming, you plunge your sword into the zombie's skull. It
+                        gasps like it needs air and collapses. Foolish creature thought that it could
+                        get through you.
+                        """))
+                    return "mimic_room"
+
+            elif character == "rogue":
+                print(dedent("""
+                    'Well, this is a sticky situation.', you think to yourself. 'I am not exactly the
+                    fighting type.' Your options are not limited, however. You consider 'running' and getting
+                    a better position. You think that maybe you could 'slice' up this particular foe, as
+                    he seems slow. A last resort is to somehow 'sneak' by it. How good could the senses of
+                    an undead be?
+                    """))
+                action = input("> ").lower()
+
+                if action == "running":
+                    print(dedent("""
+                        You turn back and run around the corner. You hear the shambling of the creature as
+                        it gets closer and closer. It seems like it can either hear your breathing, or smell
+                        the metal hidden in your cloak. The waiting seems eternal. You take one deep breath
+                        and as it turns the corner you plunge your dagger into it's face. That seems to be enough
+                        to take it down. Good thing you're not a fighter.
+                        """))
+                    return "mimic_room"
+
+                if action == "slice":
+                    print(dedent("""
+                        Confident that you are quicker than this fiend, you run up and start hacking at it
+                        with your hidden dagger. You slice up and down his body, not missing one vital point.
+                        You are sure that after this barrage of blows not a single living creature would be
+                        standing. Unfortunately for you this creature is not living. It grabs you with it's bloody
+                        limbs.
+                        """))
+                    return "death"
+
+                if action == "sneak":
+                    print(dedent("""
+                        'It turning around was probably a coincidence', you think. You slowly duck down and
+                        start making your way towards the creature. It doesn't break it's gaze on you, but
+                        you figure that it is not smart enough to do anything. As you slowly sneak past it you
+                        breath a sigh of relief that it hasn't moved. You pat yourself on the back for a job well
+                        done. Then you feel another, colder, hand on your back.
+                        """))
+                    return "death"
 
     class MimicRoom(Scene):
         print("done")
