@@ -255,13 +255,15 @@ def main():
                     return "death"
 
     class MimicRoom(Scene):
-        print(dedent("""
-            You make your way past the pile of zombie. Past where the creature was standing
-            is a door adorned with golden trim. You carefully check the door. No traps, and
-            it's not locked. Those are good signs. Looks like a fairly normal door aside from
-            the gold. You open it carefully and two chests sit at the far end of an otherwise
-            unremarkable room. There is what seems to be an exit behind the chests.
-            """))
+
+        def enter(self):
+            print(dedent("""
+                You make your way past the pile of zombie. Past where the creature was standing
+                is a door adorned with golden trim. You carefully check the door. No traps, and
+                it's not locked. Those are good signs. Looks like a fairly normal door aside from
+                the gold. You open it carefully and two chests sit at the far end of an otherwise
+                unremarkable room. There is what seems to be an exit behind the chests.
+                """))
 
             if character == "wizard":
                 print(dedent("""
@@ -272,25 +274,29 @@ def main():
                     shiny and almost new. Surely the higher quality items would be in a higher
                     quality chest?
                     """))
-                    action = input("> ").lower()
+                action = input("> ").lower()
 
-                    if action == "left":
-                        print(dedent("""
-                            You go over to the chest on the left. You cast acid splash on the lock
-                            and it melts off. You open it to see a couple of bags of gold. You put
-                            them into your backpack and head towards the exit and the other chest.
-                            As you walk closer you seem to hear what sounds like the other
-                            chest... sneezing? Best to move on.
-                            """))
-                        return "finished"
+                if action == "left":
+                    print(dedent("""
+                        You go over to the chest on the left. You cast acid splash on the lock
+                        and it melts off. You open it to see a couple of bags of gold. You put
+                        them into your backpack and head towards the exit and the other chest.
+                        As you walk closer you seem to hear what sounds like the other
+                        chest... sneezing? Best to move on.
+                        """))
+                    return "finished"
 
-                    if action == "right":
-                        print(dedent("""
-                            You go over to the chest on the right. You cast acid splash on the lock
-                            and suddenly the chest bursts open. It reveals giant teeth and with a
-                            shriek bites down. The last thing you feel is the acid around your body.
-                            """))
-                        return "death"
+                if action == "right":
+                    print(dedent("""
+                        You go over to the chest on the right. You cast acid splash on the lock
+                        and suddenly the chest bursts open. It reveals giant teeth and with a
+                        shriek bites down. The last thing you feel is the acid around your body.
+                        """))
+                    return "death"
+
+                else:
+                    print("As you stand and try to make a decision the right chest lunges forward...")
+                    return "death"
 
             elif character == "fighter":
                 print(dedent("""
@@ -320,6 +326,10 @@ def main():
                         """))
                     return "death"
 
+                else:
+                    print("As you stand and try to make a decision the right chest lunges forward...")
+                    return "death"
+
             elif character == "rogue":
                 print(dedent("""
                     You glance at both chests. The 'left' chest seems to be a standard chest. It's lock seems
@@ -344,7 +354,10 @@ def main():
                         """))
                     return "death"
 
-                    
+                else:
+                    print("As you stand and try to make a decision the right chest lunges forward...")
+                    return "death"
+
     class Finished(Scene):
 
         def enter(self):
